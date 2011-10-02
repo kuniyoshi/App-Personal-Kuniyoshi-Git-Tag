@@ -6,6 +6,8 @@ requires 'Readonly';
 requires 'Path::Class';
 requires 'Time::Piece';
 
+install_script "bin/apk-git-tag";
+
 tests 't/*.t';
 author_tests 'xt';
 

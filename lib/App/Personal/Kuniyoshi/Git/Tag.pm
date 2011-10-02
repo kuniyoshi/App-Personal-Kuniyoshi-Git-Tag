@@ -7,7 +7,7 @@ use List::Util qw( first );
 use Path::Class qw( file );
 use Time::Piece qw( localtime );
 
-our $VERSION = "0.01";
+our $VERSION = "0.02";
 
 Readonly my $FILENAME => "Changes";
 

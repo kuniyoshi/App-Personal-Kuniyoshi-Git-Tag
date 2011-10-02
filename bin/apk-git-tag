@@ -1,0 +1,76 @@
+#!/usr/bin/perl -s
+use 5.10.0;
+use utf8;
+use strict;
+use warnings;
+use open qw( :utf8 :std );
+use Pod::Usage qw( pod2usage );
+use FindBin;
+use lib "$FindBin::Bin/../lib";
+use App::Personal::Kuniyoshi::Git::Tag;
+
+our( $help, $usage, $exec, $m, $a );
+$usage = 1
+    unless grep { defined } ( $help, $usage, $exec, $m, $a );
+
+if ( $help )  {
+    pod2usage( -verbose => 2 )
+        and exit;
+}
+
+if ( $usage ) {
+    pod2usage( -verbose => 1 )
+        and exit;
+}
+
+my $app = App::Personal::Kuniyoshi::Git::Tag->new( exec => $exec, m => $m, a => $a );
+
+$app->run;
+
+=head1 NAME
+
+apk-gittag - commit with tag
+
+=head1 SYNOPSIS
+
+  gittag [options]
+
+  Options:
+      -usage
+      -help
+      -m
+      -a
+      -exec
+
+=head1 OPTIONS
+
+=over
+
+=item -usage
+
+A default option, if no option was specified, then this will set true.
+
+=item -help
+
+Shows documentation.
+
+=item -a
+
+Same option as git commit.
+
+=item -m
+
+Specifies message for Changes, and tag.
+Please keep this one short sentence.
+
+If Changes has over two lines, then this does not work.
+Do manual instead.
+
+=item -exec
+
+Add version description to Changes file, commit it, and add tag.
+
+=back
+
+=cut
+
